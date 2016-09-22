@@ -1,0 +1,14 @@
+2016-09-22 15:09:22-DEBUG-__main__(downloader.py:35): https://www.tutorialspoint.com/http/http_header_fields.htm Response Code: 200 Size: 0.0 KB  
+2016-09-22 15:09:22-DEBUG-__main__(downloader.py:35): http://httpstat.us/200 Response Code: 200 Size: 0.006 KB  
+2016-09-22 15:13:40-INFO-googleapiclient.discovery(discovery.py:259): URL being requested: GET https://www.googleapis.com/discovery/v1/apis/customsearch/v1/rest 
+2016-09-22 15:13:40-INFO-googleapiclient.discovery(discovery.py:838): URL being requested: GET https://www.googleapis.com/customsearch/v1?key=AIzaSyBsx7wuJfoHIA9VsWayDFZW-w7APu-4gps&alt=json&cx=012502276015408778302%3Aaanpptkeffi&q=Hillary 
+2016-09-22 15:13:40-DEBUG-__main__(crawler.py:34): Enqueued: https://www.hillaryclinton.com/ 
+2016-09-22 15:13:40-DEBUG-__main__(crawler.py:34): Enqueued: https://twitter.com/hillaryclinton?lang=en 
+2016-09-22 15:13:40-DEBUG-__main__(crawler.py:34): Enqueued: https://en.wikipedia.org/wiki/Hillary_Clinton 
+2016-09-22 15:13:40-DEBUG-__main__(crawler.py:34): Enqueued: http://www.thegatewaypundit.com/2016/08/hillarys-taking-weekends-off/ 
+2016-09-22 15:13:40-DEBUG-__main__(crawler.py:34): Enqueued: http://www.slate.com/articles/news_and_politics/cover_story/2016/07/the_people_who_hate_hillary_clinton_the_most.html 
+2016-09-22 15:13:40-DEBUG-__main__(crawler.py:34): Enqueued: http://www.politico.com/magazine/story/2014/05/hillary-clinton-media-105901 
+2016-09-22 15:13:40-DEBUG-__main__(crawler.py:34): Enqueued: https://hillaryspeeches.com/scheduled-events/ 
+2016-09-22 15:13:40-DEBUG-__main__(crawler.py:34): Enqueued: https://www.facebook.com/hillaryclinton/ 
+2016-09-22 15:13:40-DEBUG-__main__(crawler.py:34): Enqueued: http://www.rollingstone.com/politics/features/how-hillary-clinton-became-a-vessel-for-americas-fury-w440914 
+2016-09-22 15:13:40-DEBUG-__main__(crawler.py:34): Enqueued: https://shop.hillaryclinton.com/ 
