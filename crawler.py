@@ -3,6 +3,7 @@ import logging
 from loggingconfig import LOGGING
 from googleapiclient.discovery import build
 from pqdict import PQDict
+from downloader import Downloader
 
 
 #parameters for google search API:
@@ -33,6 +34,14 @@ class Crawler():
 			self.priory_queue.additem(item['link'],10)
 			self.logger.debug("Enqueued: "+ item['link'])
 			self.webpages_crawled+=1
+	
+	def crawl(self):
+		try:
+			url = priory_queue.pop()
+
+		except KeyError :
+			self.logger.error(" Key does not exist or queue is empty! ")
+
 
 def main():
 	crawler = Crawler()
