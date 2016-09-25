@@ -72,7 +72,7 @@ class Crawler():
 			return False
 		else:
 			return True
-
+	#the crawling process
 	def crawl(self):
 		try:
 			while self.priority_queue.top():
@@ -83,7 +83,7 @@ class Crawler():
 					except :
 						print( "Failed in downloading")
 
-					
+
 
 				else:
 					self.logger.debug(url + " CANNOT been crawled due to previous reason")
