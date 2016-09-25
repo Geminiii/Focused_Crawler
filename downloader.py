@@ -16,18 +16,15 @@ class Downloader(object):
 		self.total_failed = 0
 
 	def download(self,url):
-		user_agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)'
-		values = {'name': 'Tianhao',
-				'location': 'NYC',
-				'language': 'Python'}
-		headers = {'User-Agent': user_agent}
-		data = urllib.parse.urlencode(values)
-		data = data.encode('ascii')
-		req = urllib.request.Request(url, data, headers)
+		
+		user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'
+		req = urllib.request.Request(url)
+		req.add_header('User-Agent', user_agent)
 
 		log_header = url + " Response Code: "
 
 		try:
+
 			response = urllib.request.urlopen(req)
 			log_header += str(response.getcode())
 			if response.getcode() == 200:
@@ -44,14 +41,13 @@ class Downloader(object):
 					self.logger.debug(log_header)
 					try:
 						self.writer(url, text)
+						self.logger.debug(log_header + " has been written to disks!")
 					except :
-						self.logger.error(log_header + "Cannot be written to disks!")
+						self.logger.error(log_header + " CANNOT be written to disks!")
 				else:
 					log_header += " Unwanted file type, URL discarded "
 					text = ""
-				self.logger.debug(log_header)
-				#self.writer(url, text)
-				#return text
+				return text
 		except URLError as e:
 			self.total_failed += 1
 			if hasattr(e, 'reason'):
@@ -71,9 +67,7 @@ class Downloader(object):
 
 	def writer(self, url, text):
 		url_components = urlparse(url)
-		#print(url_components)
 		dir = './data/' + url_components.netloc + url_components.path
-		#print(dir)
 		if not os.path.isdir(dir):
 			os.makedirs(dir)
 		f = open(dir + '/index.html', 'w')
@@ -88,12 +82,6 @@ def main():
 	downloader.download('http://cs.wellesley.edu/~qtw/lectures/webcrawl.html')
 	downloader.download('http://stackoverflow.com/questions/27747288/python-name-os-is-not-defined-even-though-it-is-explicitly-imported')
 
-	"""downloader.download('http://infolab.stanford.edu/pub/papers/google.pdf')
-	downloader.download('http://httpstat.us/404')
-	downloader.download('http://httpstat.us/503')
-	downloader.download('http://httpstat.us/201')
-	downloader.download('http://httpstat.us/403')
-	downloader.download('http://httpstat.us/504')"""
 if __name__ == '__main__':
 	import logging.config
 	logging.config.dictConfig(LOGGING)
