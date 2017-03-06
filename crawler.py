@@ -85,7 +85,6 @@ class Crawler():
 		elif 'cgi' in normalized_url:
 			return False
 		else:
-			#self.visited_urls.add(normalized_url)
 			return True
 	#the crawling process
 	def crawl(self):
@@ -114,12 +113,12 @@ class Crawler():
 						base_url = url_comp.scheme + "://" + url_comp.netloc + "/"
 					except:
 						self.logger.error("Cannot parse: " + url)
+						
 					if base_url in self.sites_times:
 						self.sites_times[base_url] += 1
 					else:
 						self.sites_times[base_url] = 1
 					self.visited_urls.add(normalized_url)
-					
 					
 					if rel < 0.2:
 						continue
@@ -163,18 +162,12 @@ class Crawler():
 						base_url = url_comp.scheme + "://" + url_comp.netloc + "/"
 					except:
 						self.logger.error("Cannot parse: " + url)
-					"""if base_url in self.sites_times:
-						self.sites_times[base_url] += 1
-					else:
-						self.sites_times[base_url] = 1"""
 					self.visited_urls.add(normalized_url)
-					#relavence = self.calculator.cosine_similarity(content) 
 					
 					for link in self.parser.extract_all_links(content):
 						full_link = self.parser.parse_links(url, link)
 						if full_link is not None :
 							try:
-	
 								if base_url  not in self.sites_times:
 									self.sites_times[base_url] = 1
 								elif self.sites_times[base_url] < int(self.limit):
@@ -203,8 +196,6 @@ def main():
 	statistics = "Total request: " + str(crawler.downloader.total_requests) + " Total 404 encountered: " + str(crawler.downloader.total_failed)
 	crawler.crawled_log(statistics)
 	
-
-
 
 if __name__ == '__main__':
 	import logging.config
